@@ -1,49 +1,34 @@
-# Knight's Tour Visualizer
+# Knight's Tour
 
-A JavaFX desktop app that visualizes the [Knight's Tour problem](https://en.wikipedia.org/wiki/Knight%27s_tour) on a chessboard grid. Enter a board dimension and the app renders an `n x n` grid to explore the problem visually.
+JavaFX project for the knight's tour problem — find a path where the knight visits every square on the board exactly once.
 
-## Tech Stack
-
-- **Java 24**
-- **JavaFX** (controls + FXML) for the UI
-- **Maven** for build and dependency management
-
-## Prerequisites
-
-- JDK 24 installed ([check with `java -version`](https://www.oracle.com/java/technologies/downloads/))
-- No need to install Maven separately — this project includes the Maven Wrapper (`mvnw`)
-
-## Running the App
-
-Clone the repo and run it with the included Maven wrapper:
+## How to run
 
 ```bash
-git clone https://github.com/Rakhmanov7/KnightsProblem2.git
-cd KnightsProblem2
 ./mvnw clean javafx:run
 ```
 
-On Windows:
+(Windows: `mvnw.cmd clean javafx:run`)
 
-```bash
-mvnw.cmd clean javafx:run
-```
+You need JDK 21+.
 
-This launches a window titled **"Knights Problem"**. Enter a board size (`n`) in the text field to generate an `n x n` grid.
+## How it works
 
-## Project Structure
+1. Pick a board size `n` and a starting square
+2. Hit **Solve**
+3. The knight animates through the tour (visited squares turn orange)
 
-```
-src/main/java/com/example/knightsproblem2/
-├── App.java                 # JavaFX application entry point
-├── Launcher.java            # Launcher class
-└── primaryController.java   # Controller for the primary view / board drawing logic
-```
+I used Warnsdorff's rule for the search (always move to the square with the fewest options). For smaller boards it can also backtrack if needed.
 
-## Status
+**Heads up:** there is no tour on 2x2, 3x3, or 4x4 boards. 1x1 and 5x5+ are fine.
 
-🚧 Work in progress — board visualization is implemented; knight's tour pathfinding logic is planned next.
+## Files
+
+- `KnightTourSolver.java` – the actual algorithm
+- `AnimatedTourBoard.java` – board + knight animation
+- `PrimaryController` / `SecondaryController` – the two screens
+- `AppState.java` – shares the solve result between screens
 
 ## License
 
-No license specified yet.
+None yet.

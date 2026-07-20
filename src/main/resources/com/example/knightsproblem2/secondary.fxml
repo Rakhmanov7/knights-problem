@@ -1,14 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane prefHeight="640.0" prefWidth="720.0"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.knightsproblem2.SecondaryController">
+    <top>
+        <VBox spacing="8.0">
+            <padding>
+                <Insets top="16.0" right="20.0" bottom="8.0" left="20.0" />
+            </padding>
+            <children>
+                <HBox spacing="12.0" alignment="CENTER_LEFT">
+                    <children>
+                        <Label fx:id="lblTitle"
+                               style="-fx-font-size: 18px; -fx-font-weight: bold;"
+                               text="Tour" />
+                        <Button mnemonicParsing="false" onAction="#replay"
+                                prefHeight="32.0" prefWidth="90.0" text="Replay" />
+                        <Button mnemonicParsing="false" onAction="#showAll"
+                                prefHeight="32.0" prefWidth="90.0" text="Show all" />
+                        <Button mnemonicParsing="false" onAction="#goPrimary"
+                                prefHeight="32.0" prefWidth="110.0" text="Back" />
+                    </children>
+                </HBox>
+                <Label fx:id="lblStatus" wrapText="true" text="" />
+                <Label text="Orange = already visited, blue = where the knight is now" />
+            </children>
+        </VBox>
+    </top>
+    <center>
+        <StackPane fx:id="boardHost" alignment="CENTER">
+            <padding>
+                <Insets top="8.0" right="20.0" bottom="20.0" left="20.0" />
+            </padding>
+            <style>
+                -fx-background-color: #f7f7f7;
+            </style>
+        </StackPane>
+    </center>
+</BorderPane>
